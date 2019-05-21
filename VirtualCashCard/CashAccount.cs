@@ -4,7 +4,7 @@ using System.Text;
 
 namespace VirtualCashCard
 {
-    public class CashAccount : IAccount
+    public class CashAccount : IAccount, ITransactionManager
    {
       public string AccountNumber { get; private set; }      
       public decimal Balance { get; private set; }
@@ -16,7 +16,7 @@ namespace VirtualCashCard
       }
             
 
-      public int Credit(decimal amount)
+      int ITransactionManager.Credit(decimal amount)
       {
          lock (this)
          {
@@ -27,7 +27,7 @@ namespace VirtualCashCard
          return 0;
       }
 
-      public int Debit(decimal amount)
+      int ITransactionManager.Debit(decimal amount)
       {
          lock (this)
          {

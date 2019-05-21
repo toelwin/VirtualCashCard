@@ -17,7 +17,7 @@ namespace VirtualCashCard.Tests
       public void Topup_Successful()
       {
          var initBalance = 100;
-         IAccount account = new CashAccount("1234123412341234", initBalance);
+         IAccount account = new CashAccount("1234123412341234", initBalance);         
          ICard card = new CashCard(account, 1234);
          
          decimal topUpVal = 100;
