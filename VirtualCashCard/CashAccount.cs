@@ -18,12 +18,24 @@ namespace VirtualCashCard
 
       public int Credit(decimal amount)
       {
-         throw new NotImplementedException();
+         lock (this)
+         {
+
+            this.Balance += amount;
+
+         }
+         return 0;
       }
 
       public int Debit(decimal amount)
       {
-         throw new NotImplementedException();
+         lock (this)
+         {
+            if (this.Balance < amount) return -1;  // Insufficient Fund
+
+            this.Balance -= amount;
+         }
+         return 0;
       }
    }
 

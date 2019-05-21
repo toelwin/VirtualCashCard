@@ -18,12 +18,16 @@ namespace VirtualCashCard
 
       public int Topup(decimal amount)
       {
-         throw new NotImplementedException();
+         return _Account.Credit(amount);
       }
 
       public int WithDraw(int pin, decimal amount)
       {
-         throw new NotImplementedException();
+         if (_Pin == pin)
+         {
+            return _Account.Debit(amount);
+         }
+         throw new ArgumentException("INVALIDE_PIN");
       }
    }
 }

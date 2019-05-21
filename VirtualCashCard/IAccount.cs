@@ -4,8 +4,8 @@
    {
       string AccountNumber { get; }
       decimal Balance { get; }
-      int Debit(decimal amount);
       int Credit(decimal amount);
+      int Debit(decimal amount);
    }
 
 }
