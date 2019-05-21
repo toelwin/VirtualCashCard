@@ -68,5 +68,26 @@ namespace VirtualCashCard.Tests
          
          Assert.IsTrue(total == -5);
       }
+
+
+      [TestMethod()]
+      public void WithDraw_Successful_On_Sufficient_Fund()
+      {
+         IAccount account = new CashAccount("1234123412341234", 100);
+         ICard card = new CashCard(account, 1234);
+         var retVal = card.WithDraw(1234, 5);
+         Assert.IsTrue(retVal == 0);
+      }
+
+
+      [TestMethod()]
+      public void WithDraw_Failed_On_Insufficient_Fund()
+      {
+         IAccount account = new CashAccount("1234123412341234", 100);
+         ICard card = new CashCard(account, 1234);
+         var retVal = card.WithDraw(1234, 200);
+         Assert.IsFalse(retVal == 0);
+      }
+
    }
 }
